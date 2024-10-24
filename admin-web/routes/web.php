@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuildController;
 
 
 Route::get('/', function () {
@@ -62,5 +63,9 @@ Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
 });
+
+Route::get('/guilds/{id}', [GuildController::class, 'show'])->name('guild.show');
+
+Route::get('/guilds/{id}/players', [PlayerController::class, 'index'])->name('guild.players');
 
 
