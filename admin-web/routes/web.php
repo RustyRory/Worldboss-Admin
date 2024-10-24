@@ -56,6 +56,7 @@ Route::get('auth/discord/callback', function () {
 // Route pour le dashboard (accessible uniquement si authentifié)
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+
 // Route pour se déconnecter
 Route::get('/logout', function () {
     Auth::logout();
