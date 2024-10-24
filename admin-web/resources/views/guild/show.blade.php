@@ -22,7 +22,9 @@
         <li><strong>Banque Voleur:</strong> {{ $guild->rogue_bank }}</li>
         <li><strong>Banque Aventurier:</strong> {{ $guild->adventurer_bank }}</li>
     </ul>
-    
+
+    <a href="{{ route('guild.players', $guild->id_discord) }}">Voir les Joueurs du Serveur</a>
+    <br>
     <a href="{{ url('/dashboard') }}">Retour au Dashboard</a>
 </body>
 </html>
