@@ -8,19 +8,19 @@
 </head>
 <body>
     <h1>Bienvenue sur ton Dashboard !</h1>
+    <a href="{{ url('/logout') }}">Se déconnecter</a>
     <h2>Vos Serveurs :</h2>
     <ul>
         @forelse ($guilds as $guild)
             <li>
-                <strong>{{ $guild->name }}</strong> - ID: {{ $guild->id_discord }}
-                <br>
-                Niveau: {{ $guild->level }} - Dégâts: {{ $guild->damages }} - Banque Guerrier: {{ $guild->warrior_bank }}
+                {{ $guild->name }} (ID: {{ $guild->id_discord }})
+                <a href="{{ route('guild.show', $guild->id_discord) }}">Voir les statistiques</a>
             </li>
         @empty
             <li>Aucune guilde trouvée.</li>
         @endforelse
     </ul>
-    <a href="{{ url('/logout') }}">Se déconnecter</a>
+    
 </body>
 </html>
 
