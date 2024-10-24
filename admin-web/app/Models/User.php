@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function guilds()
+    {
+        return $this->hasMany(Guild::class, 'id_owner', 'discord_id');
+    }
 }
