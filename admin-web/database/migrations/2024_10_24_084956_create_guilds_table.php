@@ -20,8 +20,7 @@ class CreateGuildsTable extends Migration
             $table->integer('damages'); // Dégâts
             $table->integer('max_damages'); // Dégâts max
             $table->integer('all_damages'); // Dégâts totaux
-            $table->integer('timeout'); // Timeout
-            $table->integer('cycle'); // Cycle
+            $table->string('message_wb_id'); // ID du message Discord
             $table->string('message_city_id'); // ID du message Discord
             $table->string('message_warrior_id'); // ID du message Discord
             $table->string('message_mage_id'); // ID du message Discord
