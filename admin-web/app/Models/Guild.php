@@ -9,6 +9,15 @@ class Guild extends Model
 {
     use HasFactory;
 
+    // Spécifiez le nom de la clé primaire
+    protected $primaryKey = 'id_discord';
+
+    // Si `id_discord` n'est pas un entier auto-incrémenté, précisez-le aussi
+    public $incrementing = false;
+
+    // Si `id_discord` est une chaîne, définissez le type de clé
+    protected $keyType = 'string';
+
     // Si tu as des colonnes spécifiques que tu veux remplir en masse, déclare-les ici
     protected $fillable = [
         'id_discord',
