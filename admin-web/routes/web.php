@@ -28,12 +28,10 @@ Route::get('auth/discord', function () {
 // Gestion du callback après authentification Discord
 Route::get('auth/discord/callback', function () {
     $discordUser = Socialite::driver('discord')->user();
-
     // Cherche l'utilisateur par Discord ID ou email
     $user = User::where('discord_id', $discordUser->id)
                 ->orWhere('email', $discordUser->email)
                 ->first();
-
     // Si l'utilisateur n'existe pas, on le crée
     if (!$user) {
         $user = User::create([
@@ -48,25 +46,21 @@ Route::get('auth/discord/callback', function () {
         $user->discord_id = $discordUser->id;
         $user->save();
     }
-
     // Connecter l'utilisateur
     Auth::login($user);
-
     return redirect('/dashboard'); // Redirection après connexion réussie
 });
-
 // Route pour le dashboard (accessible uniquement si authentifié)
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-
 // Route pour se déconnecter
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
 });
-
 Route::get('/guilds/{id}', [GuildController::class, 'show'])->name('guild.show');
-
 Route::get('/guilds/{id}/players', [PlayerController::class, 'index'])->name('guild.players');
+
+Route::put('/guild/{id}', [GuildController::class, 'update'])->name('guild.update');
+
 
 
